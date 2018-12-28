@@ -13,6 +13,7 @@ class CreateContactsTable extends Migration
      */
     public function up()
     {
+        
         Schema::create('contacts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
@@ -20,6 +21,11 @@ class CreateContactsTable extends Migration
             $table->string('address');
             $table->integer('phonenumber');
             $table->timestamps();
+        });
+
+        Schema::table('contacts', function (Blueprint $table) {
+            $table->string('website')->after('phonenumber');
+            $table->string('fbprofile')->after('website');
         });
     }
 

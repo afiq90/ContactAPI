@@ -50,12 +50,16 @@ class ContactController extends Controller
         $email = $request->input('email');
         $address = $request->input('address');
         $phonenumber = $request->input('phonenumber');
+        $website = $request->input('website');
+        $fbprofile = $request->input('fbprofile');
 
         $data = new \App\Contact();
         $data->name = $name;
         $data->email = $email;
         $data->address = $address;
         $data->phonenumber = $phonenumber;
+        $data->website = $website;
+        $data->fbprofile = $fbprofile;
 
         if($data->save()) {
             $res['message'] = 'Success!';
@@ -112,12 +116,16 @@ class ContactController extends Controller
         $email = $request->input('email');
         $address = $request->input('address');
         $phonenumber = $request->input('phonenumber');
+        $website = $request->input('website');
+        $fbprofile = $request->input('fbprofile');
 
         $data = \App\Contact::where('id', $id)->first();
         $data->name = $name;
         $data->email = $email;
         $data->address = $address;
         $data->phonenumber = $phonenumber;
+        $data->website = $website;
+        $data->fbprofile = $fbprofile;
 
         if($data->save()) {
             $res['message'] = 'Successfully updated!';
