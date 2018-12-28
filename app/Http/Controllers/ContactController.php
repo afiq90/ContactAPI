@@ -53,6 +53,7 @@ class ContactController extends Controller
         $website = $request->input('website');
         $fbprofile = $request->input('fbprofile');
         $twitterLink = $request->input('twitterLink');
+        $isAvailable = $request->input('isAvailable');
 
         $data = new \App\Contact();
         $data->name = $name;
@@ -62,6 +63,7 @@ class ContactController extends Controller
         $data->website = $website;
         $data->fbprofile = $fbprofile;
         $data->twitterLink = $twitterLink;
+        $data->isAvailable = $isAvailable;
 
         if($data->save()) {
             $res['message'] = 'Success!';
@@ -123,6 +125,8 @@ class ContactController extends Controller
         $phonenumber = $request->input('phonenumber');
         $website = $request->input('website');
         $fbprofile = $request->input('fbprofile');
+        $twitterLink = $request->input('twitterLink');
+        $isAvailable = $request->input('isAvailable');
 
         $data = \App\Contact::where('id', $id)->first();
         $data->name = $name;
@@ -131,6 +135,8 @@ class ContactController extends Controller
         $data->phonenumber = $phonenumber;
         $data->website = $website;
         $data->fbprofile = $fbprofile;
+        $data->twitterLink = $twitterLink;
+        $data->isAvailable = $isAvailable;
 
         if($data->save()) {
             $res['message'] = 'Successfully updated!';
@@ -155,8 +161,8 @@ class ContactController extends Controller
         $data = \App\Contact::where('id', $id)->first();
 
         if($data->delete()) {
-            $res['message'] = 'Succesfully deleted';
-            $res['value'] = $data;
+            $res['message'] = "Succesfully deleted contact id {$id}!";
+            // $res['value'] = $data;
             return response($res);
         } else {
             $res['message'] = "Failed to delete";

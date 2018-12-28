@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddTwitterLinkColumnsToContactsTable extends Migration
+class AddIsAvailableColumnToContactsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,7 +15,7 @@ class AddTwitterLinkColumnsToContactsTable extends Migration
     {
         Schema::table('contacts', function (Blueprint $table) {
             //
-            $table->string('twitterLink')->after('fbprofile')->nullable();
+            $table->boolean('isAvailable')->after('twitterLink')->nullable();
         });
     }
 
