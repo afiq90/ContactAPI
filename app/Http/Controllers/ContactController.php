@@ -52,6 +52,7 @@ class ContactController extends Controller
         $phonenumber = $request->input('phonenumber');
         $website = $request->input('website');
         $fbprofile = $request->input('fbprofile');
+        $twitterLink = $request->input('twitterLink');
 
         $data = new \App\Contact();
         $data->name = $name;
@@ -60,11 +61,15 @@ class ContactController extends Controller
         $data->phonenumber = $phonenumber;
         $data->website = $website;
         $data->fbprofile = $fbprofile;
+        $data->twitterLink = $twitterLink;
 
         if($data->save()) {
             $res['message'] = 'Success!';
             $res['value'] = $data;
             return response($res); 
+        } else {
+            $res['message'] = 'Failed to save data';
+            return response($res);
         }
     }
 
